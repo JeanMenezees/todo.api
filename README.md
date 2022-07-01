@@ -129,7 +129,7 @@ Logo depois a aplicação estará rodando em seu **localhost:3000**
 }
 ```
 
-## Atualizar todo **PUT** ```localhost:3000/todo/id```
+## Atualizar todo **PUT** ```localhost:3000/todo/id/{id}```
 
 #### Param
 
@@ -154,7 +154,7 @@ Logo depois a aplicação estará rodando em seu **localhost:3000**
 }
 ```
 
-## Deletar todo **DELETE** ```localhost:3000/todo/id```
+## Deletar todo **DELETE** ```localhost:3000/todo/id/{id}```
 
 #### Param 
 
