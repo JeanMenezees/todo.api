@@ -1,7 +1,8 @@
-import { Controller, Post, UseGuards, Request, Get, Inject, forwardRef } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Get, Inject, forwardRef, Body } from '@nestjs/common';
 import { AuthService } from 'src/auth/auth.service';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { LocalAuthGuard } from 'src/auth/guards/local.auth.guard';
+import { User } from './user.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -20,13 +21,8 @@ export class UsersController {
     return req.user;
   }
 
-  @Get(':nome')
-  async obter(nome: string) {
-    return await this.userService.obterPorNome(nome);
-  }
-
-  @Get()
-  async obterTodos() {
-    return await this.userService.obterTodos();
+  @Post('/register')
+  async register(@Body() user: User) {
+    return await this.userService.criar(user);
   }
 }
