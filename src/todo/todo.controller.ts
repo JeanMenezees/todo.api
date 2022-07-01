@@ -1,34 +1,58 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { Todo } from './todo.entity';
 import { TodoService } from './todo.service';
 
 @Controller('todo')
 export class TodoController {
-    constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) {}
 
-    @Get()
-    async obterTodos(): Promise<Todo[]> {
-        return await this.todoService.obterTodos();
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async obterTodos(@Request() req: any): Promise<Todo[]> {
+    return await this.todoService.obterTodos(req.user.userId);
+  }
 
-    @Get(':id')
-    async obterPorId(@Param() id: number): Promise<Todo> {
-        return await this.todoService.obterPorId(id);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  async obterPorId(@Request() req: any, @Param() id: number): Promise<Todo> {
+    return await this.todoService.obterPorId(id, req.user.userId);
+  }
 
-    @Post()
-    async criar(@Body() todo: Todo): Promise<Todo> {
-        return await this.todoService.criar(todo);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  async criar(@Request() req: any, @Body() todo: Todo): Promise<Todo> {
+    const addedTodo: Todo = { ...todo, usuario: req.user.userId };
 
-    @Put(':id') 
-    async atualizar(@Param() id: number, @Body() todo: Todo): Promise<UpdateResult> {
-        return await this.todoService.atualizar(id, todo);
-    }
+    return await this.todoService.criar(addedTodo);
+  }
 
-    @Delete(':id')
-    async deletar(@Param() id: number): Promise<DeleteResult> {
-        return await this.todoService.deletar(id);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Put(':id')
+  async atualizar(
+    @Request() req: any,
+    @Param() id: number,
+    @Body() todo: Todo,
+  ): Promise<UpdateResult> {
+    return await this.todoService.atualizar(id, todo, req.user.userId);
+  }
+
+  @Delete(':id')
+  async deletar(
+    @Request() req: any,
+    @Param() id: number,
+  ): Promise<DeleteResult> {
+    return await this.todoService.deletar(id);
+  }
 }
