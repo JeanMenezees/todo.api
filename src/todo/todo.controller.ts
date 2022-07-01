@@ -48,11 +48,12 @@ export class TodoController {
     return await this.todoService.atualizar(id, todo, req.user.userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async deletar(
     @Request() req: any,
     @Param() id: number,
   ): Promise<DeleteResult> {
-    return await this.todoService.deletar(id);
+    return await this.todoService.deletar(id, req.user.userId);
   }
 }
