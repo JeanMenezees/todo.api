@@ -1,6 +1,6 @@
 <div align="center">
 
-  ## 📓
+  <h1>📓</h1>
 
   # **To do REST API**
   
@@ -54,18 +54,18 @@ Logo depois a aplicação estará rodando em seu **localhost:3000**
 
 ## Por que usar o NestJS?
 
-O NestJs atende um desenvolvimento rápido e com dev hacks muito ágeis através do seu [CLI](https://docs.nestjs.com/cli/overview) e toda sua estrutura. Além disso, sua flexibilidade que possibilita o uso do [express](https://expressjs.com/pt-br/) e a integração com vários bancos de dados de maneira rápida e eficaz é uma vantagem.
+O NestJs atende um desenvolvimento rápido e com dev hacks muito ágeis através do seu [CLI](https://docs.nestjs.com/cli/overview) e toda sua estrutura. Além disso, sua flexibilidade que possibilita o uso do [express](https://expressjs.com/pt-br/) e a integração com vários bancos de dados de maneira rápida e eficaz é uma vantagem. Por fim algumas configurações padrões como a ```npm run start:dev``` já tira a preocupação da instalação do [nodemon](https://www.npmjs.com/package/nodemon)
 
 ### Nest TypeORM
----
+
 Possibilita realizar queries poderosas para os bancos de dados
 
 ![query_example](img/nest_query_example-1.png)
 
 ### NestJS auth
----
+
 Com recursos de jwt e [strategies](https://docs.nestjs.com/microservices/custom-transport#creating-a-strategy) do Nest, é possível realizar a autenticação de maneira segura e eficaz [veja mais](https://docs.nestjs.com/security/authentication)
 
 ### Nest CLI
----
+
 Sua CLI agiliza e torna sua arquitetura e desenvolvimento flexível e dinâmico, neste caso foi usada a mvc.
