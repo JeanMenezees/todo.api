@@ -52,6 +52,123 @@ Logo depois a aplicação estará rodando em seu **localhost:3000**
 - Uso do typeORM como relational object da aplicação
 - Uso do sqlite para migrar e obter os dados
 
+## Cadastrar usuario **POST** ```localhost:3000/users/register```
+
+#### Body 
+
+```
+{
+    "nome": "New user",
+    "email": "newuser@gmail.com",
+    "senha": "123"
+}
+```
+
+#### Response
+
+```
+{
+  "nome": "New user",
+  "email": "newuser@gmail.com,
+  "senha": "123",
+  "id": 1
+}
+```
+
+## Autenticar usuario **POST** ```localhost:3000/users/auth/login```
+
+#### Body 
+
+```
+{
+    "username": "New user",
+    "password": "123"
+}
+```
+
+#### Response
+
+```
+{
+  "access_token": ...
+}
+```
+
+## Obter todos os todo's **GET** ```localhost:3000/todo```
+
+#### Response
+
+```
+{
+  [...]
+}
+```
+
+## Cadastrar todo **POST** ```localhost:3000/todo```
+
+#### Body 
+
+```
+  {
+    "titulo": "Limpar a casa",
+    "descricao": "limpar a casa"
+  }
+```
+
+#### Response
+
+```
+{
+  "titulo": "Limpar a casa",
+  "descricao": "limpar a casa",
+  "usuario": 1,
+  "id": 1,
+  "completa": false,
+  "createdAt": "2022-07-01T21:27:24.000Z",
+  "updatedAt": "2022-07-01T21:27:24.000Z"
+}
+```
+
+## Atualizar todo **PUT** ```localhost:3000/todo/id```
+
+#### Param
+
+```id:number```
+
+### Body
+
+```
+{
+  "titulo": "Limpar quarto",
+  "descricao": "limpar quarto"
+}
+```
+
+#### Response
+
+```
+{
+  "generatedMaps": [],
+  "raw": [],
+  "affected": 1
+}
+```
+
+## Deletar todo **DELETE** ```localhost:3000/todo/id```
+
+#### Param 
+
+```id:number```
+
+#### Response
+
+```
+{
+  "raw": [],
+  "affected": 1
+}
+```
+
 ## Por que usar o NestJS?
 
 O NestJs atende um desenvolvimento rápido e com dev hacks muito ágeis através do seu [CLI](https://docs.nestjs.com/cli/overview) e toda sua estrutura. Além disso, sua flexibilidade que possibilita o uso do [express](https://expressjs.com/pt-br/) e a integração com vários bancos de dados de maneira rápida e eficaz é uma vantagem. Por fim algumas configurações padrões como a ```npm run start:dev``` já tira a preocupação da instalação do [nodemon](https://www.npmjs.com/package/nodemon)
