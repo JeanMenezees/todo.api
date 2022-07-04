@@ -26,6 +26,7 @@ Api REST **mvc** em [NestJS](https://nestjs.com/) para a fazeres
 - TypeORM
 - SQL
 - Postman
+- Docker
 
 ## Instalacao
 
@@ -41,6 +42,22 @@ Para iniciar sua api execute o seguinte comando:
 
 ```
 $ npm run start
+```
+
+## Iniciando com Docker!
+
+#### Dependencia do [Docker](https://www.docker.com/) instalado
+
+Crie uma imagem com
+
+```
+$ docker compose logs
+```
+
+E suba a imagem com 
+
+```
+$ docker compose up nest-project
 ```
 
 Logo depois a aplicação estará rodando em seu **localhost:3000**
