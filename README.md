@@ -51,7 +51,7 @@ $ npm run start
 Crie uma imagem com
 
 ```
-$ docker compose logs
+$ docker compose
 ```
 
 E suba a imagem com 
